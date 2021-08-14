@@ -56,7 +56,7 @@ async def _human_time_duration(seconds):
 async def start_(client: Client, message: Message):
     await message.reply_text(
         f"""<b>👋 **Welcome** {message.from_user.first_name}**\n
-⚡ **EX Music allow you to play music on groups through the new Telegram's Voice Chats!**
+⚡ **[{BOT_NAME}](https://t.me/{BOT_USERNAME}) Music allow you to play music on groups through the new Telegram's Voice Chats!**
 
 💡 **Find out all the bot's commands and how they work by clicking on the » 📚 Commands button.**
 
@@ -70,15 +70,18 @@ async def start_(client: Client, message: Message):
                         "➕ Tambahkan saya ke grup anda ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
                 [
                     InlineKeyboardButton(
-                        "📣 Official Channel", url=f"https://t.me/EXProjects"), 
+                        "📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"), 
                     InlineKeyboardButton(
-                        "👥 Support Group", url=f"https://t.me/EXGroupSupport")
+                        "👥 Support Group", url=f"https://t.me/{GROUP_SUPPORT}")
                 ],[
                     InlineKeyboardButton(
-                        "⚡ Created by", url=f"https://t.me/rizexx")
+                        "⚡ Created by", url=f"https://t.me/{OWNER}")
                 ],[
                     InlineKeyboardButton(
                         "📚 Commands", url=f"https://telegra.ph/PGuide-to-using-EXMUSIC-bot-08-13")
+                ],[
+                    InlineKeyboardButton(
+                        "🛠️ Source code", url=f"https://github.com/rizkyoye/EX-music")
                 ]
             ]
         ),
@@ -118,8 +121,8 @@ def map(pos):
         url = f"https://t.me/EXGroupSupport"
         button = [
             [InlineKeyboardButton("➕ Tambahkan saya ke grup anda ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
-            [InlineKeyboardButton(text = 'Official Channel', url=f"https://t.me/EXProject"),
-             InlineKeyboardButton(text = 'Support Group', url=f"https://t.me/EXGroupSupport")],
+            [InlineKeyboardButton(text = '📣 Official Channel', url=f"https://t.me/EXProject"),
+             InlineKeyboardButton(text = '👥 Support Group', url=f"https://t.me/EXGroupSupport")],
             [InlineKeyboardButton(text = '🌻 Developer', url=f"https://t.me/rizexx")]
         ]
     else:
@@ -186,10 +189,10 @@ async def reload(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ", url=f"https://t.me/EXGroupSupport"
+                        "sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ", url=f"https://t.me/{SUPPORT_GROUP}"
                     ),
                     InlineKeyboardButton(
-                        "ᴄʀᴇᴀᴛᴇᴅ ʙʏ", url=f"https://t.me/rizexx"
+                        "ᴄʀᴇᴀᴛᴇᴅ ʙʏ", url=f"https://t.me/{OWNER}"
                     )
                 ]
             ]
