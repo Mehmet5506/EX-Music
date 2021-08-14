@@ -541,7 +541,7 @@ async def play(_, message: Message):
                     InlineKeyboardButton("⏺ Menu", callback_data="menu"),
                     InlineKeyboardButton("🗑 Close", callback_data="cls"),
                 ],[
-                    InlineKeyboardButton("📣 Official Channel", url=f"https://t.me/EXProjects")
+                    InlineKeyboardButton("📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}")
                 ],
             ]
         )
@@ -589,7 +589,7 @@ async def play(_, message: Message):
                     InlineKeyboardButton("⏺ Menu", callback_data="menu"),
                     InlineKeyboardButton("🗑 Close", callback_data="cls"),
                 ],[
-                    InlineKeyboardButton("📣 Official Channel", url=f"https://t.me/EXProjects")
+                    InlineKeyboardButton("📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}")
                 ],
             ]
         )
@@ -668,7 +668,7 @@ async def play(_, message: Message):
                     InlineKeyboardButton("⏺ Menu", callback_data="menu"),
                     InlineKeyboardButton("🗑 Close", callback_data="cls"),
                 ],[
-                    InlineKeyboardButton("📣 CHANNEL", url=f"https://t.me/EXProjects")
+                    InlineKeyboardButton("📣 CHANNEL", url=f"https://t.me/{UPDATES_CHANNEL}")
                 ],
             ]
         )
