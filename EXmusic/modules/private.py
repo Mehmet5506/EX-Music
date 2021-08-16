@@ -72,7 +72,7 @@ async def start_(client: Client, message: Message):
                     InlineKeyboardButton(
                         "📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"), 
                     InlineKeyboardButton(
-                        "👥 Support Group", url=f"https://t.me/{GROUP_SUPPORT}")
+                        "👥 Support Group", url=f"https://t.me/{SUPPORT_GROUP}")
                 ],[
                     InlineKeyboardButton(
                         "⚡ Created by", url=f"https://t.me/{OWNER}")
