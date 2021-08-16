@@ -123,7 +123,7 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
     os.remove("background.png")
 
 
-async def generate_cover(requested_by, title, views, duration, thumbnail):
+async def generate_cover(requested_by, title, views, duration, thumbnail, chat_title):
     async with aiohttp.ClientSession() as session:
         async with session.get(thumbnail) as resp:
             if resp.status == 200:
@@ -140,7 +140,7 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
     img = Image.open("temp.png")
     draw = ImageDraw.Draw(img)
     font = ImageFont.truetype("etc/Roboto-Medium.ttf", 65)
-    draw.text((30, 570), f"Playing in **{}**".format(chat.title)", (0, 0, 0), font=font)
+    draw.text((30, 570), f"Playing in {chat_title}", (0, 0, 0), font=font)
     font = ImageFont.truetype("etc/Roboto-Regular.ttf", 50)
     draw.text((30, 640),
         f"{title}",
