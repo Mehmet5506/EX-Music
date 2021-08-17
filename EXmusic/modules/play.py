@@ -602,7 +602,7 @@ async def play(_, message: Message):
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         
         try:
-          results = YoutubeSearch(query, max_results=7).to_dict()
+          results = YoutubeSearch(query, max_results=10).to_dict()
         except:
           await lel.edit("**berikan judul lagu yang ingin kamu putar !**")
         # Looks like hell. Aren't it?? FUCK OFF
@@ -611,8 +611,8 @@ async def play(_, message: Message):
             j = 0
             useer=user_name
 
-            emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣"]
-            while j < 7:
+            emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣","8️⃣","9️⃣","🔟"]
+            while j < 10:
                 toxxt += f"{emojilist[j]} [{results[j]['title'][:25]}](https://youtube.com{results[j]['url_suffix']})\n"
                 toxxt += f" ├ 💡 **Duration** - {results[j]['duration']}\n"
                 toxxt += f" └ ⚡ __Powered by EX MUSIC__\n\n"
@@ -627,13 +627,22 @@ async def play(_, message: Message):
                     ],
                     [
                         InlineKeyboardButton("4️⃣", callback_data=f'plll 3|{query}|{user_id}'),
-                        InlineKeyboardButton("5️⃣", callback_data=f'plll 4|{query}|{user_id}'),    
+                        InlineKeyboardButton("5️⃣", callback_data=f'plll 4|{query}|{user_id}'), 
+                    ],
+                    [   
+                        InlineKeyboardButton(text = '«', callback_data = f"help+{pos-1}"),
+                        InlineKeyboardButton(text="🗑 Close", callback_data="cls"),
+                        InlineKeyboardButton(text = '»', callback_data = f"help+{pos+1}"),
                     ],
                     [
                         InlineKeyboardButton("6️⃣", callback_data=f'plll 5|{query}|{user_id}'),
                         InlineKeyboardButton("7️⃣", callback_data=f'plll 6|{query}|{user_id}'),
+                        InlineKeyboardButton("8️⃣", callback_data=f'plll 7|{query}|{user_id}'),
                     ],
-                    [InlineKeyboardButton(text="🗑 Close", callback_data="cls")],
+                    [
+                        InlineKeyboardButton("9️⃣", callback_data=f'plll 8|{query}|{user_id}'),
+                        InlineKeyboardButton("🔟", callback_data=f'plll 9|{query}|{user_id}'), 
+                    ],
                 ]
             )     
             await lel.edit(toxxt,reply_markup=koyboard,disable_web_page_preview=True)
