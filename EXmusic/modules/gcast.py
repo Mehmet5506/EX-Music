@@ -20,17 +20,17 @@ async def broadcast(_, message: Message):
     if message.from_user.id not in SUDO_USERS:
         return
     else:
-        wtf = await message.reply("`Get started globally message...`")
+        wtf = await message.reply("`Genel olarak çalışmaya başlama iletisi...`")
         if not message.reply_to_message:
-            await wtf.edit("balas ke pesan untuk melakukan broadcast!")
+            await wtf.edit("yayına iletiyi yanıtlama!")
             return
         lmao = message.reply_to_message.text
         async for dialog in geez.iter_dialogs():
             try:
                 await geez.send_message(dialog.chat.id, lmao)
                 sent = sent+1
-                await wtf.edit(f"`global cast...` \n\n**mengirim ke:** `{sent}` obrolan \n**gagal di:** {failed} obrolan")
+                await wtf.edit(f"`küresel oyuncu kadrosu...` \n\n**gönderme:** `{sent}` sohbet \n**başarısız oldu:** {failed} obrolan")
                 await asyncio.sleep(3)
             except:
                 failed=failed+1
-        await message.reply_text(f"`gcast berhasil` \n\n**terkirim ke:** `{sent}` obrolan \n**gagal di:** {failed} obrolan")
+        await message.reply_text(f"`gcast başarıyla` \n\n**gönderildiği yer:** `{sent}` sohbet \n**başarısız oldu:** {failed} sohbet")
