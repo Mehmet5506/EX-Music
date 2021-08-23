@@ -30,46 +30,40 @@ f"""
 
 1. Botu yönetici yapma 
 2. Sesli sohbeti başlatma /VCG 
-3. Tür `/userbotjoin` ve deneyin /play <nama lagu>
+3. Tür `/userbotjoin` ve deneyin /play <şarkı adı>
 × Assistant Bot katılırsa müziğin tadını çıkarın, 
-× Yardımcı botlar katılmazsa lütfen @{ASSISTANT_NAME} Grubunuza gidin ve yeniden deneyin.
+× Yardımcı botlar katılmazsa lütfen @TaliaMusicasistant Grubunuza gidin ve yeniden deneyin.
 
 **» Üye Gruplarındaki Komutlar:**
-/playlist : Untuk Menampilkan daftar putar Lagu sekarang
-/current : Untuk Menunjukkan  Lagu sekarang yang sedang diputar
+/playlist : Çalma listesindeki bilgileri gösterir
+/current : Şu anda çalan bir şarkıyı göstermek için 
 /song <judul lagu> : Untuk Mendownload lagu di YouTube 
-/video <judul lagu> : Untuk Mendownload Video di YouTube dengan detail
-/vsong <judul lagu> : Untuk Mendownload Video di YouTube dengan detail
-/deezer <judul lagu> : Untuk Mendownload lagu dari deezer 
-/saavn <judul lagu> : Untuk Mendownload lagu dari website saavn
-/search <judul lagu> : Untuk Mencari Video di YouTube dengan detail
+/video <judul lagu> : Ayrıntılarla YouTube 
+/vsong <judul lagu> : YouTube'da ayrıntıları içeren Videolar İndirmek için
+/deezer <judul lagu> : Deezer'dan şarkı indirmek için 
+/saavn <judul lagu> : Saavn'ın web sitesinden şarkı indirmek için
+/search <judul lagu> : YouTube'da ayrıntıları içeren Videolar Aramak için 
 
 **» Yalnızca Yönetici için Komut:**
-/play <judul lagu> : Untuk Memutar lagu yang Anda minta melalui youtube
-/play <link yt> : Untuk Memutar lagu yang Anda minta melalui link youtube
-/play <reply ke audio> : Untuk Memutar lagu yang Anda minta melalui file audio
-/dplay : Untuk Memutar lagu yang Anda minta melalui deezer
-/splay : Untuk Memutar lagu yang Anda minta melalui jio saavn
-/skip : Untuk Menskip pemutaran lagu ke Lagu berikutnya
-/pause : Untuk Menjeda pemutaran Lagu
-/resume : Untuk Melanjutkan pemutaran Lagu yang di pause
-/end : Untuk Memberhentikan pemutaran Lagu
-/userbotjoin - Untuk Mengundang asisten ke obrolan Anda
-/admincache - Untuk MemRefresh admin list
+/play <judul lagu> : İstediğiniz şarkıyı youtube üzerinden çalmak için 
+/play <link yt> :youtube linki üzerinden istediğiniz şarkıyı çalmak için 
+/play <reply ke audio> : İstediğiniz şarkıyı ses dosyasıyla çalmak için 
+/dplay : İstediğiniz şarkıyı deezer üzerinden çalmak için 
+/splay : Jio Saavn aracılığıyla istediğiniz şarkıyı çalmak için 
+/skip : Menskip'e bir sonraki şarkıya şarkı çalma
+/pause : Şarkı çalmayı duraklatmak için
+/resume: Duraklatılmış Şarkıların oynatılıp oynatılır devam etmesi için
+/end : Şarkıların kayıttan yürütülmesini durdurmak için
+/userbotjoin - Asistanları sohbetinize davet etmek için
+/admincache - Yönetici listesini yenilemek için 
 
 **» kanal akışı komutları:**
-/cplay - streaming musik di obrolan suara channel
-/cplayer - tampilkan lagu di streaming
-/cpause - jeda musik streaming
-/cresume - lanjutkan streaming yang dijeda
-/cskip - lewati streaming ke lagu berikutnya
-/cend - akhiri streaming musik
+/cplay - sesli sohbet kanalında müzik akışı
+/cplayer - akışta şarkıları göster
+/cpause - müzik akışını duraklatma
+/crèsume - duraklatılmış akışa devam et
+/cskip - akışı bir sonraki şarkıya atla
+/cend - müzik akışını sonlandır 
 
 **» eğlence için komutlar:**
-/chika - check it by yourself
-/wibu - check it by yourself
-/asupan - check it by yourself
-/truth - check it by yourself
-/dare - check it by yourself
-"""
-      ]
+J]
