@@ -66,4 +66,10 @@ f"""
 /cend - müzik akışını sonlandır 
 
 **» eğlence için komutlar:**
-
+/chika - kendiniz kontrol edin
+/wibu - kendiniz kontrol edin
+/asupan - kendiniz kontrol edin
+/truth - kendiniz kontrol edin
+/dare - kendiniz kontrol edin
+"""
+      ]
