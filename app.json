@@ -2,7 +2,7 @@
   "name": "-EXMusic",
   "description": "Repo for telegram bot, can play songs on vcg. Powered by PyTgCalls.",
   "keywords": ["music", "voicechat", "telegram"],
-  "repository": "https://github.com/rizkyoye/EX-Music",
+  "repository": "https://github.com/Mehmet5506/EX-Music",
   "stack": "container",
   "logo": "https://telegra.ph/file/708896ed251f0a3a6cfeb.jpg",
   "buildpacks": [
