@@ -46,7 +46,7 @@ f"""
 
 **» Yalnızca Yönetici için Komut:**
 /play <judul lagu> : İstediğiniz şarkıyı youtube üzerinden çalmak için 
-/play <link yt> :youtube linki üzerinden istediğiniz şarkıyı çalmak için 
+/play <link yt> : =youtube linki üzerinden istediğiniz şarkıyı çalmak için 
 /play <reply ke audio> : İstediğiniz şarkıyı ses dosyasıyla çalmak için 
 /dplay : İstediğiniz şarkıyı deezer üzerinden çalmak için 
 /splay : Jio Saavn aracılığıyla istediğiniz şarkıyı çalmak için 
@@ -66,4 +66,4 @@ f"""
 /cend - müzik akışını sonlandır 
 
 **» eğlence için komutlar:**
-J]
+
