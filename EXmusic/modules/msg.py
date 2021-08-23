@@ -20,21 +20,21 @@ class Messages():
       HELP_MSG = [
         ".",
 f"""
-Haii selamat datang kembali di EXMusic
-• EXMusic dapat memutar lagu di voice chat group dan di channel kamu dengan mudah.
-• Assistant Music » @{ASSISTANT_NAME} «\n 
+Merhabalar tekrar hoş geldiniz. EXMusic
+• EXMusic, sesli sohbet gruplarında ve kanalınızda kolayca şarkı çalabilir.
+• Assistant Müzik » @TaliaMusicasistant «\n 
 """,
 
 f"""
-**Pengaturan**
+**Ayarlar ✳️**
 
-1. Jadikan bot sebagai admin
-2. Mulai obrolan suara / VCG
-3. Ketik `/userbotjoin` dan coba /play <nama lagu>
-× Jika Assistant Bot bergabung selamat menikmati musik, 
-× Jika Assistant Bot tidak bergabung Silahkan Tambahkan @{ASSISTANT_NAME} ke grup Anda dan coba lagi
+1. Botu yönetici yapma 
+2. Sesli sohbeti başlatma /VCG 
+3. Tür `/userbotjoin` ve deneyin /play <nama lagu>
+× Assistant Bot katılırsa müziğin tadını çıkarın, 
+× Yardımcı botlar katılmazsa lütfen @{ASSISTANT_NAME} Grubunuza gidin ve yeniden deneyin.
 
-**» Perintah Untuk dalam grup Member Juga Bisa :**
+**» Üye Gruplarındaki Komutlar:**
 /playlist : Untuk Menampilkan daftar putar Lagu sekarang
 /current : Untuk Menunjukkan  Lagu sekarang yang sedang diputar
 /song <judul lagu> : Untuk Mendownload lagu di YouTube 
@@ -44,7 +44,7 @@ f"""
 /saavn <judul lagu> : Untuk Mendownload lagu dari website saavn
 /search <judul lagu> : Untuk Mencari Video di YouTube dengan detail
 
-**» Perintah Hanya Untuk Admin :**
+**» Yalnızca Yönetici için Komut:**
 /play <judul lagu> : Untuk Memutar lagu yang Anda minta melalui youtube
 /play <link yt> : Untuk Memutar lagu yang Anda minta melalui link youtube
 /play <reply ke audio> : Untuk Memutar lagu yang Anda minta melalui file audio
@@ -57,7 +57,7 @@ f"""
 /userbotjoin - Untuk Mengundang asisten ke obrolan Anda
 /admincache - Untuk MemRefresh admin list
 
-**» channel streaming commands:**
+**» kanal akışı komutları:**
 /cplay - streaming musik di obrolan suara channel
 /cplayer - tampilkan lagu di streaming
 /cpause - jeda musik streaming
@@ -65,7 +65,7 @@ f"""
 /cskip - lewati streaming ke lagu berikutnya
 /cend - akhiri streaming musik
 
-**» commands for fun:**
+**» eğlence için komutlar:**
 /chika - check it by yourself
 /wibu - check it by yourself
 /asupan - check it by yourself
