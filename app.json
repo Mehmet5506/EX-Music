@@ -31,17 +31,17 @@
     "SUPPORT_GROUP": {
       "description": "Grup dukungan MusicPlayer Anda Tanpa Menggunakan ==> @ <== [skip ini jika Anda tidak punya]",
       "required": false,
-      "value": "EXSupportGroup"
+      "value": ""
     },
     "UPDATES_CHANNEL": {
       "description": "Updates Channel @ [skip ini jika Anda tidak punya]",
       "required": false,
-      "value": "EXProjects"
+      "value": ""
     }, 
     "PROJECT_NAME": {
       "description": "Nama proyek MusicPlayer Anda.",
       "required": false,
-      "value": "EX Project"
+      "value": ""
     },
     "ASSISTANT_NAME": {
       "description": "Username Telegram asisten Music Player Anda tanpa @.",
@@ -80,7 +80,7 @@
     "DURATION_LIMIT": {
       "description": "Batas durasi audio maksimal untuk download (minutes).",
       "required": true,
-      "value": "15"
+      "value": "30"
     }
   }
 }
