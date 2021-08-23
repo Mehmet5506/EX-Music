@@ -37,7 +37,7 @@ f"""
 **» Üye Gruplarındaki Komutlar:**
 /playlist : Çalma listesindeki bilgileri gösterir
 /current : Şu anda çalan bir şarkıyı göstermek için 
-/song <judul lagu> : Untuk Mendownload lagu di YouTube 
+/song <judul lagu> : YouTube'da şarkı indirmek için
 /video <judul lagu> : Ayrıntılarla YouTube 
 /vsong <judul lagu> : YouTube'da ayrıntıları içeren Videolar İndirmek için
 /deezer <judul lagu> : Deezer'dan şarkı indirmek için 
