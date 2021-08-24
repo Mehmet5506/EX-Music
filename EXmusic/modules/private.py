@@ -55,33 +55,33 @@ async def _human_time_duration(seconds):
 )
 async def start_(client: Client, message: Message):
     await message.reply_text(
-        f"""<b>👋 **Welcome** {message.from_user.first_name}**\n
-⚡ **[{BOT_NAME}](https://t.me/{BOT_USERNAME}) Music allow you to play music on groups through the new Telegram's Voice Chats!**
+        f"""<b>👋 **Merhaba** {message.from_user.first_name}**\n
+⚡ **[Talia Music](https://t.me/Efsanestar_bot) Müzik, yeni Telegram'ın Sesli Sohbetleri aracılığıyla gruplarda müzik çalmanıza olanak sağlar!**
 
-💡 **Find out all the bot's commands and how they work by clicking on the » 📚 Commands button.**
+💡 **Botun tüm komutlarını ve nasıl çalıştıklarını öğrenin.» 📚 Komutlar düğmesi.**
 
-❓ **Untuk informasi keseluruhan tentang bot, selengkapnya** /help
+❓ **Botlar hakkında genel bilgi için, daha fazla** /help
 <b>""",
 
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "➕ Tambahkan saya ke grup anda ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
+                        "➕ Beni grubunuza ekleyin ➕", url=f"https://t.me/Efsanestar_bot?startgroup=true")],
                 [
                     InlineKeyboardButton(
-                        "📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"), 
+                        "📣 Resmi group", url=f"https://t.me/Sohbetskyfall"), 
                     InlineKeyboardButton(
-                        "👥 Support Group", url=f"https://t.me/{SUPPORT_GROUP}")
+                        "👥 Destek Grubu", url=f"https://t.me/Sohbetdestek")
                 ],[
                     InlineKeyboardButton(
-                        "⚡ Created by", url=f"https://t.me/{OWNER}")
+                        "⚡ Oluşturan", url=f"https://t.me/Mahoaga")
                 ],[
                     InlineKeyboardButton(
-                        "📚 Commands", url=f"https://telegra.ph/PGuide-to-using-EXMUSIC-bot-08-13")
+                        "📚 Müzik group", url=f"https://t.me/taliasohbet")
                 ],[
                     InlineKeyboardButton(
-                        "🛠️ Source code", url=f"https://github.com/rizkyoye/EX-music")
+                        "🛠️ Kaynak kodu", url=f"https://t.me/Mahoaga")
                 ]
             ]
         ),
@@ -118,12 +118,12 @@ def map(pos):
             [InlineKeyboardButton(text = 'ɴᴇxᴛ »', callback_data = "help+2")]
         ]
     elif(pos==len(tr.HELP_MSG)-1):
-        url = f"https://t.me/EXGroupSupport"
+        url = f"https://t.me/sohbetdestek"
         button = [
-            [InlineKeyboardButton("➕ Tambahkan saya ke grup anda ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
-            [InlineKeyboardButton(text = '📣 Official Channel', url=f"https://t.me/EXProject"),
-             InlineKeyboardButton(text = '👥 Support Group', url=f"https://t.me/EXGroupSupport")],
-            [InlineKeyboardButton(text = '🌻 Developer', url=f"https://t.me/rizexx")]
+            [InlineKeyboardButton("➕ Beni grubunuza ekleyin ➕", url=f"https://t.me/Efsanestar_bot?startgroup=true")],
+            [InlineKeyboardButton(text = '📣 Resmi kanal', url=f"https://t.me/Sohbetdestek"),
+             InlineKeyboardButton(text = '👥 Support Group', url=f"https://t.me/Sohbetneresi")],
+            [InlineKeyboardButton(text = '🌻 Developer', url=f"https://t.me/Mahoaga")]
         ]
     else:
         button = [
@@ -142,15 +142,15 @@ def map(pos):
 )
 async def start(client: Client, message: Message):
     await message.reply_text(
-        "**Apakah anda ingin mencari link YouTube?**",
+        "**YouTube bağlantısı bulmak istiyor musunuz.?**",
         reply_markup=InlineKeyboardMarkup(
             [   
                 [    
                     InlineKeyboardButton(
-                        "✅ Ya", switch_inline_query_current_chat=""
+                        "✅ Evet", switch_inline_query_current_chat=""
                     ),
                     InlineKeyboardButton(
-                        "❌ Tidak ", callback_data="close"
+                        "❌ Kapat", callback_data="close"
                     )
                 ]
             ]
@@ -165,12 +165,12 @@ async def start(client: Client, message: Message):
 )
 async def help(client: Client, message: Message):
     await message.reply_text(
-        """baca panduan bot dibawah ini""",
+        """Aşağıdaki bot kılavuzunu okuyun""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "📚 Panduan Bot", url="https://telegra.ph/PGuide-to-using-EXMUSIC-bot-08-13"
+                        "📚 Bot yapımı için", url="https://t.me/Mahoaga"
                     )
                 ]
             ]
@@ -184,25 +184,25 @@ async def help(client: Client, message: Message):
     & ~ filters.edited
 )
 async def reload(client: Client, message: Message):
-    await message.reply_text("""✅ Bot **berhasil dimulai ulang!**\n\n• **Daftar admin** telah **diperbarui**""",
+    await message.reply_text("""✅ Bot **başarıyla yeniden başlatıldı!**\n\n• **Yöneticilerin listesi** zaten **Güncelleştirilmiş**""",
       reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ", url=f"https://t.me/{SUPPORT_GROUP}"
+                        "sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ", url=f"https://t.me/Taliasohbet"
                     ),
                     InlineKeyboardButton(
-                        "ᴄʀᴇᴀᴛᴇᴅ ʙʏ", url=f"https://t.me/{OWNER}"
+                        "ᴄʀᴇᴀᴛᴇᴅ ʙʏ", url=f"https://t.me/Mahoaga"
                     )
                 ]
             ]
         )
    )
 
-@Client.on_message(command(["ping", f"ping@{BOT_USERNAME}"]) & ~filters.edited)
+@Client.on_message(command(["ping", f"ping@Efsanestar_bot"]) & ~filters.edited)
 async def ping_pong(client: Client, message: Message):
     start = time()
-    m_reply = await message.reply_text("pinging...")
+    m_reply = await message.reply_text("Ping...")
     delta_ping = time() - start
     await m_reply.edit_text(
         "🏓 `PONG!!`\n"
@@ -210,7 +210,7 @@ async def ping_pong(client: Client, message: Message):
     )
 
 
-@Client.on_message(command(["uptime", f"uptime@{BOT_USERNAME}"]) & ~filters.edited)
+@Client.on_message(command(["uptime", f"uptime@Efsanestar_bot"]) & ~filters.edited)
 @authorized_users_only
 async def get_uptime(client: Client, message: Message):
     current_time = datetime.utcnow()
@@ -218,6 +218,6 @@ async def get_uptime(client: Client, message: Message):
     uptime = await _human_time_duration(int(uptime_sec))
     await message.reply_text(
         "🤖 bot status:\n"
-        f"• 🚀 **uptime:** `{uptime}`\n"
+        f"• 🚀 **Uptime:** `{uptime}`\n"
         f"• ⚡ **start time:** `{START_TIME_ISO}`"
     )
