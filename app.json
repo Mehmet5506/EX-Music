@@ -52,7 +52,7 @@
       "required": false
     },
     "ARQ_API_KEY": {
-      "description": "Ambil api dari bot telegram » t.me/ARQRobot atau @ARQRobot",
+      "description": "Ambil api dari bot telegram » t.me/ARQRobot atau @ARQRobot", 
       "required": false
     },    
     "BG_IMAGE": {
