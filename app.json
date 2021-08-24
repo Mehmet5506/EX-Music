@@ -54,7 +54,6 @@
     "ARQ_API_KEY": {
       "description": "Ambil api dari bot telegram » t.me/ARQRobot atau @ARQRobot",
       "required": false
-      "value": "GUGFNB-XPUZDX-XGCKTJ-UZXHBZ-ARQ" 
     },    
     "BG_IMAGE": {
       "description": "Custom Background Play Musik Gunakan Foto yang Transparant format .png / .jpg",
