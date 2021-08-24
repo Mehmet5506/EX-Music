@@ -47,10 +47,6 @@
       "description": "Username Telegram asisten Music Player Anda tanpa @.",
       "required": true
     },
-    "OWNER": {
-      "description": "Masukan Nama atau Username Telegram",
-      "required": false
-    },
     "ARQ_API_KEY": {
       "description": "Ambil api dari bot telegram » t.me/ARQRobot atau @ARQRobot", 
       "required": false
