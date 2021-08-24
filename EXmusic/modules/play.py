@@ -1,4 +1,4 @@
-# Daisyxmusic (Telegram bot project)
+2# Daisyxmusic (Telegram bot project)
 # Copyright (C) 2021  Inukaasith
 # Copyright (C) 2021  TheHamkerCat (Python_ARQ)
 # This program is free software: you can redistribute it and/or modify
@@ -161,10 +161,10 @@ def updated_stats(chat, queue, vol=100):
         stats = "Pengaturan dari **{}**".format(chat.title)
         if len(que) > 0:
             stats += "\n\n"
-            stats += "Volume : {}%\n".format(vol)
-            stats += "Lagu dalam antrian : `{}`\n".format(len(que))
-            stats += "Sedang memutar lagu : **{}**\n".format(queue[0][0])
-            stats += "Requested by : {}".format(queue[0][1].mention)
+            stats += "Ses : {}%\n".format(vol)
+            stats += "Sırada şarkılar : `{}`\n".format(len(que))
+            stats += "Şarkı çalma : **{}**\n".format(queue[0][0])
+            stats += "İsteyen : {}".format(queue[0][1].mention)
     else:
         stats = None
     return stats
@@ -186,7 +186,7 @@ def r_ply(type_):
             [
                 InlineKeyboardButton("📜 Playlist", "playlist"),
             ],
-            [InlineKeyboardButton("🗑️ Close", "cls")],
+            [InlineKeyboardButton("🗑️ Kapat", "cls")],
         ]
     )
     return mar
@@ -201,14 +201,14 @@ async def ee(client, message):
     if stats:
         await message.reply(stats)
     else:
-        await message.reply("**Nyalakan dulu VCG!**")
+        await message.reply("**Önce Programı aç!**")
 
 
 @Client.on_message(filters.command("player") & filters.group & ~filters.edited)
 @authorized_users_only
 async def settings(client, message):
     if message.chat.id in DISABLED_GROUPS:
-        await message.reply("**Music player dimatikan**")
+        await message.reply("**Müzik çalar kapalı**")
         return    
     playing = None
     chat_id = get_chat_id(message.chat)
@@ -223,7 +223,7 @@ async def settings(client, message):
         else:
             await message.reply(stats, reply_markup=r_ply("play"))
     else:
-        await message.reply("**Nyalakan dulu VCG!**")
+        await message.reply("**Önce programı aç!**")
 
 
 @Client.on_message(
@@ -238,7 +238,7 @@ async def hfmm(_, message):
         return
     if len(message.command) != 2:
         await message.reply_text(
-            "**Saya hanya mengenali** `/musicplayer on` **dan** `/musicplayer off`"
+            "**Sadece tanıdım.** `/musicplayer açık` **dan** `/musicplayer kapalı`"
         )
         return
     status = message.text.split(None, 1)[1]
@@ -246,26 +246,26 @@ async def hfmm(_, message):
     if status == "ON" or status == "on" or status == "On":
         lel = await message.reply("`Processing...`")
         if not message.chat.id in DISABLED_GROUPS:
-            await lel.edit("**Pemutar musik sudah diaktifkan di obrolan ini**")
+            await lel.edit("**Müzik çalar bu sohbette etkin**")
             return
         DISABLED_GROUPS.remove(message.chat.id)
         await lel.edit(
-            f"Pemutar musik berhasil diaktifkan untuk pengguna dalam obrolan {message.chat.id}"
+            f"Müzik çalar sohbetteki kullanıcılar için başarıyla etkinleştirildi {message.chat.id}"
         )
 
     elif status == "OFF" or status == "off" or status == "Off":
-        lel = await message.reply("`Processing...`")
+        lel = await message.reply("`Hazırlanıyor...`")
         
         if message.chat.id in DISABLED_GROUPS:
-            await lel.edit("**Pemutar musik sudah dimatikan dalam obrolan Ini**")
+            await lel.edit("**Bu sohbette müzik çalar kapalı**")
             return
         DISABLED_GROUPS.append(message.chat.id)
         await lel.edit(
-            f"Pemutar musik berhasil dinonaktifkan intuk pengguna dalam obrolan {message.chat.id}"
+            f"Müzik çalar sohbette kullanıcıyı başarıyla devre dışı bıraktı {message.chat.id}"
         )
     else:
         await message.reply_text(
-            "**Saya hanya mengenali** `/musicplayer on` **dan** `/musicplayer off`"
+            "**Sadece tanıdım.** `/musicplayer açık` **ve** `/musicplayer kapalı`"
         )    
         
 
@@ -280,19 +280,19 @@ async def p_cb(b, cb):
     if type_ == "playlist":
         queue = que.get(cb.message.chat.id)
         if not queue:
-            await cb.message.edit("**Sedang tidak Memutar lagu**")
+            await cb.message.edit("**Şarkı çalmamıyor**")
         temp = []
         for t in queue:
             temp.append(t)
         now_playing = temp[0][0]
         by = temp[0][1].mention(style="md")
-        msg = "**Lagu Yang Sedang dimainkan** di {}".format(cb.message.chat.title)
+        msg = "**Çalınan Şarkılar** di {}".format(cb.message.chat.title)
         msg += "\n• " + now_playing
-        msg += "\n• Req by " + by
+        msg += "\n• Kullanıcı tarafından " + by
         temp.pop(0)
         if temp:
             msg += "\n\n"
-            msg += "**Antrian Lagu**"
+            msg += "**Şarkı Sırası**"
             for song in temp:
                 name = song[0]
                 usr = song[1].mention(style="md")
@@ -324,7 +324,7 @@ async def m_cb(b, cb):
         if (chet_id not in callsmusic.pytgcalls.active_calls) or (
             callsmusic.pytgcalls.active_calls[chet_id] == "paused"
         ):
-            await cb.answer("Chat is not connected!", show_alert=True)
+            await cb.answer("Sohbet bağlı değil!", show_alert=True)
         else:
             callsmusic.pytgcalls.pause_stream(chet_id)
 
@@ -337,10 +337,10 @@ async def m_cb(b, cb):
         if (chet_id not in callsmusic.pytgcalls.active_calls) or (
             callsmusic.pytgcalls.active_calls[chet_id] == "playing"
         ):
-            await cb.answer("Chat is not connected!", show_alert=True)
+            await cb.answer("Sohbet bağlı değil!", show_alert=True)
         else:
             callsmusic.pytgcalls.resume_stream(chet_id)
-            await cb.answer("Music Resumed!")
+            await cb.answer("Müzik Devam Etti!")
             await cb.message.edit(
                 updated_stats(m_chat, qeue), reply_markup=r_ply("pause")
             )
@@ -348,19 +348,19 @@ async def m_cb(b, cb):
     elif type_ == "playlist":
         queue = que.get(cb.message.chat.id)
         if not queue:
-            await cb.message.edit("Player is idle")
+            await cb.message.edit("Player boşta")
         temp = []
         for t in queue:
             temp.append(t)
         now_playing = temp[0][0]
         by = temp[0][1].mention(style="md")
-        msg = "**Lagu Yang Sedang dimainkan** di {}".format(cb.message.chat.title)
+        msg = "**Çalınan Şarkılar** di {}".format(cb.message.chat.title)
         msg += "\n• " + now_playing
-        msg += "\n• Req by " + by
+        msg += "\n• Kullanıcı tarafından " + by
         temp.pop(0)
         if temp:
             msg += "\n\n"
-            msg += "**Antrian Lagu**"
+            msg += "**Şarkı Sırası**"
             for song in temp:
                 name = song[0]
                 usr = song[1].mention(style="md")
@@ -372,21 +372,21 @@ async def m_cb(b, cb):
         if (chet_id not in callsmusic.pytgcalls.active_calls) or (
             callsmusic.pytgcalls.active_calls[chet_id] == "playing"
         ):
-            await cb.answer("Chat is not connected or already playng", show_alert=True)
+            await cb.answer("Sohbet bağlı değil veya zaten playng", show_alert=True)
         else:
             callsmusic.pytgcalls.resume_stream(chet_id)
-            await cb.answer("Music Resumed!")
+            await cb.answer("Müzik Devam Etti!")
     elif type_ == "puse":
         if (chet_id not in callsmusic.pytgcalls.active_calls) or (
             callsmusic.pytgcalls.active_calls[chet_id] == "paused"
         ):
-            await cb.answer("Chat is not connected or already paused", show_alert=True)
+            await cb.answer("Sohbet bağlı değil veya zaten duraklatıldı", show_alert=True)
         else:
             callsmusic.pytgcalls.pause_stream(chet_id)
 
-            await cb.answer("Music Paused!")
+            await cb.answer("Müzik Duraklatıldı!")
     elif type_ == "cls":
-        await cb.answer("Closed menu")
+        await cb.answer("Kapalı menü")
         await cb.message.delete()
 
     elif type_ == "menu":
@@ -403,7 +403,7 @@ async def m_cb(b, cb):
                 [
                     InlineKeyboardButton("📜 Playlist", "playlist"),
                 ],
-                [InlineKeyboardButton("🗑️ Close", "cls")],
+                [InlineKeyboardButton("🗑️ Kapat", "cls")],
             ]
         )
         await cb.message.edit(stats, reply_markup=marr)
@@ -411,7 +411,7 @@ async def m_cb(b, cb):
         if qeue:
             qeue.pop(0)
         if chet_id not in callsmusic.pytgcalls.active_calls:
-            await cb.answer("Chat is not connected!", show_alert=True)
+            await cb.answer("Sohbet bağlı değil!", show_alert=True)
         else:
             callsmusic.queues.task_done(chet_id)
 
@@ -423,10 +423,10 @@ async def m_cb(b, cb):
                 callsmusic.pytgcalls.change_stream(
                     chet_id, callsmusic.queues.get(chet_id)["file"]
                 )
-                await cb.answer("Skipped")
+                await cb.answer("Atlatılan")
                 await cb.message.edit((m_chat, qeue), reply_markup=r_ply(the_data))
                 await cb.message.reply_text(
-                    f"- Skipped track\n- Now Playing **{qeue[0][0]}**"
+                    f"- Atlatılan track\n- Şimdi yürütülen **{qeue[0][0]}**"
                 )
 
     else:
@@ -437,9 +437,9 @@ async def m_cb(b, cb):
                 pass
 
             callsmusic.pytgcalls.leave_group_call(chet_id)
-            await cb.message.edit("Successfully Left the Chat!")
+            await cb.message.edit("Sohbeti Başarıyla Bıraktı!")
         else:
-            await cb.answer("Chat is not connected!", show_alert=True)
+            await cb.answer("Sohbet bağlı değil!", show_alert=True)
 
 
 @Client.on_message(command("play") & other_filters)
@@ -448,7 +448,7 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return    
-    lel = await message.reply("🔁 **Lagu sedang di proses...**")
+    lel = await message.reply("🔁 **Şarkı devam ediyor...**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
@@ -466,24 +466,24 @@ async def play(_, message: Message):
             if administrator == message.from_user.id:
                 if message.chat.title.startswith("Channel Music: "):
                     await lel.edit(
-                        f"<b>Ingatlah untuk menambahkan {user.first_name} ke Channel Anda</b>",
+                        f"<b>Eklemeyi unutmayın {user.first_name} kanalınıza</b>",
                     )
                     pass
                 try:
                     invitelink = await _.export_chat_invite_link(chid)
                 except:
                     await lel.edit(
-                        "<b>Tambahkan saya sebagai admin grup terlebih dahulu</b>",
+                        "<b>Önce beni grup yöneticisi olarak ekle</b>",
                     )
                     return
 
                 try:
                     await USER.join_chat(invitelink)
                     await USER.send_message(
-                        message.chat.id, "I joined to play a song in voice chat!"
+                        message.chat.id, "Sesli sohbette bir şarkı çalmak için katıldım!"
                     )
                     await lel.edit(
-                        "<b>helper userbot joined your chat</b>",
+                        "<b>yardımcı userbot sohbetinize katıldı</b>",
                     )
 
                 except UserAlreadyParticipant:
@@ -492,18 +492,18 @@ async def play(_, message: Message):
                     # print(e)
                     await lel.edit(
                         f"<b>⛑ Flood Wait Error! ⛑\n{user.first_name} tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung untuk userbot! Pastikan pengguna tidak dibanned dalam grup."
-                        f"\n\natau tambahkan @{ASSISTANT_NAME} secara manual ke grup anda dan coba lagi</b>",
+                        f"\n\nVeya @TaliaMusicasistant grubunuza el ile el ile ve yeniden deneyin</b>",
                     )
     try:
         await USER.get_chat(chid)
         # lmoa = await client.get_chat_member(chid,wew)
     except:
         await lel.edit(
-            f"<i>{user.first_name} terkena banned dari Grup ini, Minta admin untuk mengirim perintah `/play` untuk pertama kalinya atau tambahkan @{ASSISTANT_NAME} secara manual</i>"
+            f"<i>{user.first_name} Bu Grubun yasağından etkilenerek, yöneticiden bir komut göndermesini isteyin `/play` ilk kez veya ekleyin @TaliaMusicasistant Elle</i>"
         )
         return
     text_links=None
-    await lel.edit("🔁 **Sedang mencari lagu..**")
+    await lel.edit("🔁 **Bir şarkı arıyorum..**")
     if message.reply_to_message:
         entities = []
         toxt = message.reply_to_message.text or message.reply_to_message.caption
@@ -530,15 +530,15 @@ async def play(_, message: Message):
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
             raise DurationLimitError(
-                f"**lagu dengan durasi lebih dari** `{DURATION_LIMIT}` **menit dilarang untuk diputar!**"
+                f"**Süresi daha fazla olan şarkılar ** `{DURATION_LIMIT}` **Süresi Fazla hata verebilir!**"
             )
         keyboard = InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton("⏺ Menu", callback_data="menu"),
-                    InlineKeyboardButton("🗑 Close", callback_data="cls"),
+                    InlineKeyboardButton("🗑 Kapat", callback_data="cls"),
                 ],[
-                    InlineKeyboardButton("📣 Official Channel", url=f"https://t.me/EXProjects")
+                    InlineKeyboardButton("📣 Official Channel", url=f"https://t.me/Sohbetdestek")
                 ],
             ]
         )
@@ -557,7 +557,7 @@ async def play(_, message: Message):
         )
     elif urls:
         query = toxt
-        await lel.edit("🎵 **Lagu sedang di proses..**")
+        await lel.edit("🎵 **Şarkı devam ediyor...**")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -574,7 +574,7 @@ async def play(_, message: Message):
 
         except Exception as e:
             await lel.edit(
-                "**Lagu tidak dapat ditemukan** Coba cari dengan judul lagu yang lebih jelas, Ketik `/help` bila butuh bantuan"
+                "**Şarkı bulunamadı.** Daha net bir başlık parçası aramayı deneyin, Yaz `/help` Yardıma ihtiyacın olursa."
             )
             print(str(e))
             return
@@ -584,9 +584,9 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton("⏺ Menu", callback_data="menu"),
-                    InlineKeyboardButton("🗑 Close", callback_data="cls"),
+                    InlineKeyboardButton("🗑 Kapat", callback_data="cls"),
                 ],[
-                    InlineKeyboardButton("📣 Official Channel", url=f"https://t.me/EXProjects")
+                    InlineKeyboardButton("📣 Official Channel", url=f"https://t.me/Sohbetdestek")
                 ],
             ]
         )
@@ -598,16 +598,16 @@ async def play(_, message: Message):
         for i in message.command[1:]:
             query += " " + str(i)
         print(query)
-        await lel.edit("🎵 **Sedang Memproses Lagu..**")
+        await lel.edit("🎵 **Şarkı İşleme alınıyor..**")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         
         try:
           results = YoutubeSearch(query, max_results=7).to_dict()
         except:
-          await lel.edit("**berikan judul lagu yang ingin kamu putar !**")
+          await lel.edit("**Bana çalmak istediğin şarkının adını ver. !**")
         # Looks like hell. Aren't it?? FUCK OFF
         try:
-            toxxt = "**__Please select the song you want to play__⚡**\n\n"
+            toxxt = "**__Lütfen çalmak istediğiniz şarkıyı seçin__⚡**\n\n"
             j = 0
             useer=user_name
 
@@ -633,7 +633,7 @@ async def play(_, message: Message):
                         InlineKeyboardButton("6️⃣", callback_data=f'plll 5|{query}|{user_id}'),
                         InlineKeyboardButton("7️⃣", callback_data=f'plll 6|{query}|{user_id}'),
                     ],
-                    [InlineKeyboardButton(text="🗑 Close", callback_data="cls")],
+                    [InlineKeyboardButton(text="🗑 Kapat", callback_data="cls")],
                 ]
             )     
             await lel.edit(toxxt,reply_markup=koyboard,disable_web_page_preview=True)
@@ -641,7 +641,7 @@ async def play(_, message: Message):
             return
             # Returning to pornhub
         except:
-            await lel.edit("**Tidak ada hasil yang cukup untuk dipilih..Mulai bermain langsung..**")
+            await lel.edit("**Aralarından seçim yapabileceğiniz yeterli sonuç yok...Otomatik başlatıyorum..**")
                         
             # print(results)
             try:
@@ -657,7 +657,7 @@ async def play(_, message: Message):
 
             except Exception as e:
                 await lel.edit(
-                "**Lagu tidak ditemukan.** Coba cari dengan judul lagu yang lebih jelas, Ketik `/help` bila butuh bantuan"
+                "**Şarkı bulunamadı.** Daha net bir başlık parçası aramayı deneyin, Yaz `/help` Yardıma ihtiyacın olursa."
             )
                 print(str(e))
                 return
@@ -667,9 +667,9 @@ async def play(_, message: Message):
                     [
                 [
                     InlineKeyboardButton("⏺ Menu", callback_data="menu"),
-                    InlineKeyboardButton("🗑 Close", callback_data="cls"),
+                    InlineKeyboardButton("🗑 Kapat", callback_data="cls"),
                 ],[
-                    InlineKeyboardButton("📣 CHANNEL", url=f"https://t.me/EXProjects")
+                    InlineKeyboardButton("📣 CHANNEL", url=f"https://t.me/Sohbetdestek")
                 ],
             ]
         )
@@ -687,8 +687,8 @@ async def play(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption = f"🏷 **Judul:** [{title[:30]}]({url})\n⏱ **Durasi:** {duration}\n💡 **Status:** Antrian Ke `{position}`\n" \
-                    + f"🎧 **Request Dari:** {message.from_user.mention}",
+            caption = f"🏷 **Başlık:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Sıraya Alma `{position}`\n" \
+                    + f"🎧 **İstek:** {message.from_user.mention}",
                    reply_markup=keyboard)
        
     else:
@@ -703,12 +703,12 @@ async def play(_, message: Message):
         try:
             callsmusic.pytgcalls.join_group_call(chat_id, file_path)
         except:
-            message.reply("**Voice Chat Group tidak aktif, Saya tidak dapat bergabung**")
+            message.reply("**Sesli Sohbet Grubu kapalı, Katılamam.**")
             return
         await message.reply_photo(
             photo="final.png",
-            caption = f"🏷 **Judul:** [{title[:30]}]({url})\n⏱ **Durasi:** {duration}\n💡 **Status:** Sedang Memutar\n" \
-                    + f"🎧 **Request Dari:** {message.from_user.mention}",
+            caption = f"🏷 **Başlık:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Dönüm\n" \
+                    + f"🎧 **İstek:** {message.from_user.mention}",
                    reply_markup=keyboard)
 
     os.remove("final.png")
@@ -720,7 +720,7 @@ async def ytplay(_, message: Message):
     global que
     if message.chat.id in DISABLED_GROUPS:
         return
-    lel = await message.reply("🔄 **Sedang Memproses Lagu..**")
+    lel = await message.reply("🔄 **Şarkı İşleme alınıyor..**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
@@ -738,24 +738,24 @@ async def ytplay(_, message: Message):
             if administrator == message.from_user.id:
                 if message.chat.title.startswith("Channel Music: "):
                     await lel.edit(
-                        f"<b>Ingatlah untuk menambahkan {user.first_name} ke channel anda</b>",
+                        f"<b>Eklemeyi unutmayın {user.first_name} kanalınıza</b>",
                     )
                     pass
                 try:
                     invitelink = await _.export_chat_invite_link(chid)
                 except:
                     await lel.edit(
-                        "<b>Tambahkan saya sebagai admin grup Anda terlebih dahulu</b>",
+                        "<b>Önce beni grup yöneticiniz olarak ekle</b>",
                     )
                     return
 
                 try:
                     await USER.join_chat(invitelink)
                     await USER.send_message(
-                        message.chat.id, "`I joined this group to play songs in voice chat`"
+                        message.chat.id, "`Sesli sohbette şarkı çalmak için bu gruba katıldım.`"
                     )
                     await lel.edit(
-                        "<b>helper userbot joined your chat</b>",
+                        "<b>yardımcı userbot sohbetinize katıldı</b>",
                     )
 
                 except UserAlreadyParticipant:
@@ -774,7 +774,7 @@ async def ytplay(_, message: Message):
             f"<i>{user.first_name} terkena banned dari Grup ini, Minta admin untuk mengirim perintah `/play` untuk pertama kalinya atau tambahkan @{ASSISTANT_NAME} secara manual</i>"
         )
         return
-    await lel.edit("🔎 **Sedang mencari lagu..**")
+    await lel.edit("🔎 **Bir şarkı arıyorum..**")
     user_id = message.from_user.id
     user_name = message.from_user.first_name
      
@@ -783,7 +783,7 @@ async def ytplay(_, message: Message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    await lel.edit("🎵 **Sedang memproses lagu..**")
+    await lel.edit("🎵 **Şarkı işleme alınıyor..**")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -800,7 +800,7 @@ async def ytplay(_, message: Message):
 
     except Exception as e:
         await lel.edit(
-            "**Lagu tidak ditemukan.** Coba cari dengan judul lagu yang lebih jelas, Ketik `/help` bila butuh bantuan"
+            "**Şarkı bulunamadı.** Daha net bir başlık parçası aramayı deneyin, Yaz `/help` Yardıma ihtiyacın olursa."
         )
         print(str(e))
         return
@@ -810,9 +810,9 @@ async def ytplay(_, message: Message):
             [
                 [
                     InlineKeyboardButton("⏺ Menu", callback_data="menu"),
-                    InlineKeyboardButton("🗑 Close", callback_data="cls"),
+                    InlineKeyboardButton("🗑 Kapat", callback_data="cls"),
                 ],[
-                    InlineKeyboardButton("📣 Official Channel", url=f"https://t.me/EXProjects")
+                    InlineKeyboardButton("📣 Official Channel", url=f"https://t.me/Sohbetdestek")
                 ],
             ]
         )
@@ -830,8 +830,8 @@ async def ytplay(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption = f"🏷 **Judul:** [{title[:30]}]({url})\n⏱ **Durasi:** {duration}\n💡 **Status:** Antrian Ke `{position}`\n" \
-                    + f"🎧 **Request Dari:** {message.from_user.mention}",
+            caption = f"🏷 **Başlık:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Sıraya Alma `{position}`\n" \
+                    + f"🎧 **İstek:** {message.from_user.mention}",
                    reply_markup=keyboard,
         )
         os.remove("final.png")
@@ -848,12 +848,12 @@ async def ytplay(_, message: Message):
         try:
             callsmusic.pytgcalls.join_group_call(chat_id, file_path)
         except:
-            message.reply("**Voice Chat Group tidak aktif, Saya tidak dapat bergabung**")
+            message.reply("**Sesli Sohbet Grubu kapalı, katılamıyorum**")
             return
         await message.reply_photo(
             photo="final.png",
-            caption = f"🏷 **Judul:** [{title[:30]}]({url})\n⏱ **Durasi:** {duration}\n💡 **Status:** Sedang Memutar\n" \
-                    + f"🎧 **Request Dari:** {message.from_user.mention}",
+            caption = f"🏷 **Başlık:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Dönüm\n" \
+                    + f"🎧 **İstenen:** {message.from_user.mention}",
                    reply_markup=keyboard,)
         os.remove("final.png")
         return await lel.delete()
@@ -864,7 +864,7 @@ async def deezer(client: Client, message_: Message):
     if message_.chat.id in DISABLED_GROUPS:
         return
     global que
-    lel = await message_.reply("🔄 **Sedang proses lagu..**")
+    lel = await message_.reply("🔄 **Şarkı sürecinde..**")
     administrators = await get_administrators(message_.chat)
     chid = message_.chat.id
     try:
@@ -881,14 +881,14 @@ async def deezer(client: Client, message_: Message):
             if administrator == message_.from_user.id:
                 if message_.chat.title.startswith("Channel Music: "):
                     await lel.edit(
-                        f"<b>Ingatlah untuk menambahkan {user.first_name} ke Channel Anda</b>",
+                        f"<b>Eklemeyi unutmayın {user.first_name} kanalınıza</b>",
                     )
                     pass
                 try:
                     invitelink = await client.export_chat_invite_link(chid)
                 except:
                     await lel.edit(
-                        "<b>Tambahkan saya sebagai admin grup terlebih dahulu</b>",
+                        "<b>Önce beni grup yöneticisi olarak ekleme</b>",
                     )
                     return
 
@@ -907,14 +907,14 @@ async def deezer(client: Client, message_: Message):
                     # print(e)
                     await lel.edit(
                         f"<b>⛑ Flood Wait Error ⛑\n{user.first_name} tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung untuk userbot! Pastikan pengguna tidak dibanned dalam grup."
-                        f"\n\nAtau tambahkan @{ASSISTANT_NAME} secara manual ke Grup Anda dan coba lagi</b>",
+                        f"\n\nVeya Eklemek @TaliaMusicasistant el ile Grubunuza bakın ve yeniden deneyin</b>",
                     )
     try:
         await USER.get_chat(chid)
         # lmoa = await client.get_chat_member(chid,wew)
     except:
         await lel.edit(
-            f"<i>{user.first_name} terkena banned dari Grup ini, Minta admin untuk mengirim perintah `/play` untuk pertama kalinya atau tambahkan @{ASSISTANT_NAME} secara manual</i>"
+            f"<i>{user.first_name} Bu Grubun yasağından etkilenerek, yöneticiden bir komut göndermesini isteyin `/play` ilk kez veya ekleyin @TaliaMusicasistant Elle</i>"
         )
         return
     requested_by = message_.from_user.first_name
@@ -923,7 +923,7 @@ async def deezer(client: Client, message_: Message):
     queryy = text[1]
     query = queryy
     res = lel
-    await res.edit(f"**Sedang Mencari Lagu** `{query}` **dari deezer**")
+    await res.edit(f"**Bir Şarkı Arıyor** `{query}` **dari deezer**")
     try:
         songs = await arq.deezer(query,1)
         if not songs.ok:
@@ -936,7 +936,7 @@ async def deezer(client: Client, message_: Message):
         thumbnail = "https://telegra.ph/file/fa2cdb8a14a26950da711.png"
 
     except:
-        await res.edit("**Nothing found!**")
+        await res.edit("**Hiçbir şey bulunamadı!**")
         return
     try:    
         duuration= round(duration / 60)
@@ -948,11 +948,11 @@ async def deezer(client: Client, message_: Message):
     
     keyboard = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton(text="📣 Official Channel", url="https://t.me/EXProjects")],
+            [InlineKeyboardButton(text="📣 Official Channel", url="https://t.me/Sohbetdestek")],
         ]
     )
     file_path = await convert(wget.download(url))
-    await res.edit("📥 **Generating Thumbnail**")
+    await res.edit("📥 **Küçük Resim Oluşturma**")
     await generate_cover(requested_by, title, artist, duration, thumbnail)
     chat_id = get_chat_id(message_.chat)
     if chat_id in callsmusic.pytgcalls.active_calls:
@@ -964,9 +964,9 @@ async def deezer(client: Client, message_: Message):
         loc = file_path
         appendable = [s_name, r_by, loc]
         qeue.append(appendable)
-        await res.edit_text(f"🎵 **Lagu yang Anda minta Sedang Antri di posisi** `{position}`")
+        await res.edit_text(f"🎵 **İstediğiniz şarkı yerinde sıraya giriyor** `{position}`")
     else:
-        await res.edit_text(f"🎵 **Playing...**")
+        await res.edit_text(f"🎵 **Oynatılıyor...**")
 
         que[chat_id] = []
         qeue = que.get(chat_id)
@@ -978,7 +978,7 @@ async def deezer(client: Client, message_: Message):
         try:
             callsmusic.pytgcalls.join_group_call(chat_id, file_path)
         except:
-            res.edit("Obrolan suara tidak aktif! Saya tidak dapat bergabung")
+            res.edit("Sesli sohbet kapalı! Katılamam.")
             return
 
     await res.delete()
@@ -987,7 +987,7 @@ async def deezer(client: Client, message_: Message):
         chat_id=message_.chat.id,
         reply_markup=keyboard,
         photo="final.png",
-        caption=f"🎵 **Sedang Memutar Lagu** [{title}]({url}) **Via Deezer**",
+        caption=f"🎵 **Şarkı Çalma** [{title}]({url}) **Via Deezer**",
     )
     os.remove("final.png")
 
@@ -1003,13 +1003,13 @@ async def lol_cb(b, cb):
     try:
         x,query,useer_id = typed_.split("|")      
     except:
-        await cb.message.edit("Lagu Tidak ditemukan")
+        await cb.message.edit("Şarkı Bulunamadı")
         return
     useer_id = int(useer_id)
     if cb.from_user.id != useer_id:
-        await cb.answer("Anda bukan orang yang meminta untuk memutar lagu!", show_alert=True)
+        await cb.answer("Şarkı çalmak isteyen sen değilsin.!", show_alert=True)
         return
-    await cb.message.edit("**Processing..**")
+    await cb.message.edit("**Lütfen bekleyiniz..**")
     x=int(x)
     try:
         useer_name = cb.message.reply_to_message.from_user.first_name
@@ -1044,9 +1044,9 @@ async def lol_cb(b, cb):
             [
                 [
                     InlineKeyboardButton("⏺ Menu", callback_data="menu"),
-                    InlineKeyboardButton("🗑 Close", callback_data="cls"),
+                    InlineKeyboardButton("🗑 Kapat", callback_data="cls"),
                 ],[
-                    InlineKeyboardButton("📣 CHANNEL", url=f"https://t.me/EXProjects")
+                    InlineKeyboardButton("📣 CHANNEL", url=f"https://t.me/Sohbetdestek")
                 ],
             ]
         )
@@ -1067,8 +1067,8 @@ async def lol_cb(b, cb):
         await cb.message.delete()
         await b.send_photo(chat_id,
             photo="final.png",
-            caption = f"🏷 **Judul:** [{title[:30]}]({url})\n⏱ **Durasi:** {duration}\n💡 **Status:** Antrian Ke `{position}`\n" \
-                    + f"🎧 **Request Dari:** {r_by.mention}",
+            caption = f"🏷 **Başlık:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Sıraya Alma `{position}`\n" \
+                    + f"🎧 **İstek:** {r_by.mention}",
                    reply_markup=keyboard,
         )
         os.remove("final.png")
@@ -1089,8 +1089,8 @@ async def lol_cb(b, cb):
         await cb.message.delete()
         await b.send_photo(chat_id,
             photo="final.png",
-            caption = f"🏷 **Judul:** [{title[:30]}]({url})\n⏱ **Durasi:** {duration}\n💡 **Status:** Sedang Memutar\n" \
-                    + f"🎧 **Request Dari:** {r_by.mention}",
+            caption = f"🏷 **Başlık:** [{title[:30]}]({url})\n⏱ **Süre:** {duration}\n💡 **Durum:** Sıraya alma\n" \
+                    + f"🎧 **İstek:** {r_by.mention}",
                     reply_markup=keyboard,
         )
         os.remove("final.png")
