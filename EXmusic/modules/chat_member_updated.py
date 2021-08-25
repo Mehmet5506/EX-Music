@@ -25,3 +25,4 @@ async def chat_member_updated(_, chat_member_updated: ChatMemberUpdated):
             (chat_member_updated.new_chat_member.user.id)
             in admins.admins[chat_member_updated.chat.id]
         ) else None
+
