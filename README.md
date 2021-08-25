@@ -27,6 +27,6 @@ Get pyrogram (p)  `SESSION` from here:
 [![Run on Repl.it](https://repl.it/badge/github/vckyou/PyrogramString)](https://repl.it/@vckyou/PyrogramString?lite=1&outputonly=1)
 
 ## ⚡EX
-## Repo tarafından [EX](https://t.me/Mahoaga)
-## EX Güncelleme Kanalı [Exmusic Talia](https://t.me/Sohbetdestek)
-## Grup Destek Telegram'ına Katılın [EXTALİA](https://t.me/TaliaSohbet)
+## Repo tarafından [Maho ağa](https://t.me/Mahoaga)
+## EX Güncelleme Kanalı [Mehmet Baba](https://t.me/Sohbetdestek)
+## Grup Destek Telegram'ına Katılın [Talia Support](https://t.me/TaliaSohbet)
